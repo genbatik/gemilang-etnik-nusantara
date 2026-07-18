@@ -1,6 +1,49 @@
 <!DOCTYPE html>
 <html>
 <style>
+html{
+    scroll-behavior:smooth;
+}
+
+#projects,
+#about,
+#contact{
+    scroll-margin-top:80px;
+}
+
+.w3-bar-item{
+    transition:all .3s ease;
+}
+
+.w3-bar-item:hover{
+    background:#D4AF37 !important;
+    color:#fff !important;
+    border-radius:6px;
+}
+#contact h3{
+    color:#F4D35E;
+}
+
+#contact p{
+    color:#FFF8E7;
+}
+
+#contact i{
+    color:#F4D35E;
+}
+#contact{
+    background: rgba(0,0,0,0.60);
+    padding:25px;
+    border-radius:15px;
+    margin-top:30px;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
 *{
     margin:0;
     padding:0;
@@ -8,8 +51,11 @@
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url("img/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
+
 
 /* Banner */
 header{
@@ -46,14 +92,25 @@ header img{
     .w3-display-middle h1{
         font-size:28px;
     }
+.main-content{
+    background: rgba(255,255,255,0.85); /* putih transparan */
+    border-radius: 15px;
+    margin: 30px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 
 }
 </style>
 <head>
+<style>
+
+</style>
 <title>GEMILANG ETNIK NUSANTARA</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
 
@@ -89,10 +146,10 @@ header img{
 </header>
 
 <!-- Page content -->
-<div class="w3-padding">
+<div class="w3-padding main-content">
 
   <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
+  <div class="w3-container main-content" id="projects">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
   </div>
 
@@ -143,7 +200,7 @@ header img{
   </div>
 
   <!-- About Section -->
-  <div class="w3-container w3-padding-32" id="about">
+  <div class="main-content w3-padding" id="about">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
     <img src="img/Companyprofile.png" style="width:99%">
   </div>
@@ -151,11 +208,13 @@ header img{
   
 
   <!-- Contact Section -->
-  <div class="w3-container w3-padding-32" id="contact">
+ <div class="contact" id="contact">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-    <p>No. HP 08170442930.</p>
-    <p>Email genbatik@gmail.com/luggalfiana@gmail.com</p>
-  </div>
+
+    <p><i class="fa-solid fa-phone"></i> No. HP: 08170442930</p>
+
+    <p><i class="fa-solid fa-envelope"></i> Email  : genbatik@gmail.com / luggalfiana@gmail.com</p>
+</div>
   
 <!-- Image of location/map 
 <div class="w3-container">
@@ -168,7 +227,7 @@ header img{
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p> <a href="" title="" target="_blank" class="w3-hover-text-green"></a></p>
 </footer>
 
 </body>
