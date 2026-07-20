@@ -21,21 +21,21 @@ const obs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project-img').forEach((img) => obs.observe(img));
 
 // ==========================================
-// 2. Carousel Logic (Smooth + Timer Auto Play)
+// 2. Carousel Logic (Smooth + Auto-Play Timer)
 // ==========================================
 var slideIndex = 1;
-var slideTimer = null; // Variable untuk menyimpan timer
+var slideTimer = null; // Variabel penyimpan timer
 
-// Jalankan carousel & timer pertama kali saat halaman siap
+// Inisialisasi Carousel saat halaman pertama kali dimuat
 document.addEventListener("DOMContentLoaded", () => {
   showDivs(slideIndex);
   startTimer();
 });
 
-// Fungsi untuk klik tombol panah
+// Fungsi Navigasi Tombol Manual
 function plusDivs(n) {
   showDivs(slideIndex += n);
-  resetTimer(); // Reset timer saat pengguna klik tombol manual
+  resetTimer(); // Reset timer saat diklik manual agar transisi konsisten
 }
 
 function showDivs(n) {
@@ -46,24 +46,23 @@ function showDivs(n) {
   if (n > x.length) { slideIndex = 1; }
   if (n < 1) { slideIndex = x.length; }
   
-  // Sembunyikan semua slide
+  // Sembunyikan class active dari semua slide
   for (i = 0; i < x.length; i++) {
     x[i].classList.remove("active");
   }
   
-  // Tampilkan slide yang dipilih dengan efek smooth
+  // Tampilkan slide yang aktif
   x[slideIndex - 1].classList.add("active");
 }
 
-// Fungsi untuk memulai Otomatis Slide (Timer)
+// Fungsi Otomatis Jalan (Setiap 5 Detik)
 function startTimer() {
-  // Angka 5000 = 5 Detik (bisa diubah sesuai keinginan)
   slideTimer = setInterval(() => {
     plusDivs(1);
-  }, 5000); 
+  }, 5000); // 5000ms = 5 Detik
 }
 
-// Fungsi untuk me-reset Timer jika tombol manual diklik
+// Fungsi Reset Timer ketika diklik manual
 function resetTimer() {
   clearInterval(slideTimer);
   startTimer();

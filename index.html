@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gemilang Etnik Nusantara</title>
 
-  <!-- External Stylesheets -->
+  <!-- CSS External -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@
       border-radius: 6px;
     }
 
-    /* Carousel Smooth Transition */
+    /* Carousel Wrapper & Smooth Fade Transition */
     header {
       width: 100%;
       position: relative;
@@ -90,7 +90,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      background-color: #111;
+      background-color: #000;
     }
 
     .mySlides {
@@ -105,6 +105,7 @@
       z-index: 1;
     }
 
+    /* Slide Aktif */
     .mySlides.active {
       opacity: 1;
       visibility: visible;
@@ -117,13 +118,23 @@
       object-fit: cover;
     }
 
+    /* Animasi Zoom Smooth */
+    .mySlides.active img {
+      animation: zoomSmooth 6s ease-out infinite alternate;
+    }
+
+    @keyframes zoomSmooth {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
     .w3-display-middle h1 {
       font-size: 48px;
       font-weight: bold;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
 
-    /* Custom Tombol Panah */
+    /* Custom Tombol Carousel Panah */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -284,7 +295,7 @@
   <header id="home">
     <div class="carousel-wrapper">
 
-      <!-- Slide 1 (Aktif) -->
+      <!-- Slide 1 -->
       <div class="mySlides active">
         <img src="img/home.jpeg" alt="Banner 1">
         <div class="w3-display-middle w3-center">
@@ -305,36 +316,40 @@
           </h1>
         </div>
       </div>
-		
-		      <div class="mySlides">
-        <img src="img/home3.jpeg" alt="Banner 2">
+
+      <!-- Slide 3 -->
+      <div class="mySlides">
+        <img src="img/home3.jpeg" alt="Banner 3">
         <div class="w3-display-middle w3-center">
           <h1 class="w3-xxlarge w3-text-white">
             <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
-            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+            <span class="w3-hide-small">Karya Anak Bangsa</span>
           </h1>
         </div>
       </div>
-	  
-	       <div class="mySlides">
-        <img src="img/home4.jpeg" alt="Banner 2">
+
+      <!-- Slide 4 -->
+      <div class="mySlides">
+        <img src="img/home4.jpeg" alt="Banner 4">
         <div class="w3-display-middle w3-center">
           <h1 class="w3-xxlarge w3-text-white">
             <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
-            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+            <span class="w3-hide-small">Keindahan Tradisional</span>
           </h1>
         </div>
       </div>
-	        <div class="mySlides">
-        <img src="img/home5.jpeg" alt="Banner 2">
+
+      <!-- Slide 5 -->
+      <div class="mySlides">
+        <img src="img/home5.jpeg" alt="Banner 5">
         <div class="w3-display-middle w3-center">
           <h1 class="w3-xxlarge w3-text-white">
             <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
-            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+            <span class="w3-hide-small">Warisan Nusantara</span>
           </h1>
         </div>
       </div>
-	  
+
       <!-- Tombol Navigasi Kiri & Kanan -->
       <button class="carousel-btn btn-left" onclick="plusDivs(-1)">
         <i class="fa-solid fa-chevron-left"></i>
@@ -346,8 +361,59 @@
     </div>
   </header>
 
-  <!-- Content Section -->
+  <!-- Page Content -->
   <div class="w3-padding main-content">
+
+    <!-- Project Section -->
+    <div class="w3-container" id="projects">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/1.jpeg" alt="Gambar 1" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/a.jpeg" alt="Gambar A" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/b.jpeg" alt="Gambar B" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/c.jpeg" alt="Gambar C" class="project-img">     
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/d.jpeg" alt="Gambar D" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/f.jpeg" alt="Gambar F" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/g.jpeg" alt="Gambar G" class="project-img">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container project-item">
+          <img src="img/h.jpeg" alt="Gambar H" class="project-img">
+        </div>
+      </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" style="scroll-margin-top: 80px;">
@@ -377,7 +443,7 @@
     <span>Chat via Whatsapp</span>
   </a>
 
-  <!-- Script JS -->
+  <!-- Script JS Eksternal -->
   <script src="script.js"></script>
 
 </body>
