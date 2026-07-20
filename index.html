@@ -1,234 +1,384 @@
 <!DOCTYPE html>
-<html>
-<style>
-html{
-    scroll-behavior:smooth;
-}
-
-#projects,
-#about,
-#contact{
-    scroll-margin-top:80px;
-}
-
-.w3-bar-item{
-    transition:all .3s ease;
-}
-
-.w3-bar-item:hover{
-    background:#D4AF37 !important;
-    color:#fff !important;
-    border-radius:6px;
-}
-#contact h3{
-    color:#F4D35E;
-}
-
-#contact p{
-    color:#FFF8E7;
-}
-
-#contact i{
-    color:#F4D35E;
-}
-#contact{
-    background: rgba(0,0,0,0.60);
-    padding:25px;
-    border-radius:15px;
-    margin-top:30px;
-}
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: url("img/bg.jpg") no-repeat center center fixed;
-    background-size: cover;
-}
-
-
-/* Banner */
-header{
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    position:relative;
-}
-
-header img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.w3-display-middle{
-    width:100%;
-    text-align:center;
-    padding:0 20px;
-}
-
-.w3-display-middle h1{
-    font-size:48px;
-    font-weight:bold;
-}
-
-@media(max-width:768px){
-
-    header{
-        height:60vh;
-    }
-
-    .w3-display-middle h1{
-        font-size:28px;
-    }
-.main-content{
-    background: rgba(255,255,255,0.85); /* putih transparan */
-    border-radius: 15px;
-    margin: 30px;
-    padding: 30px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-}
-</style>
+<html lang="id">
 <head>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemilang Etnik Nusantara</title>
 
-</style>
-<title>GEMILANG ETNIK NUSANTARA</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: url("img/bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url("img/banner.png") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #loader h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      color: #ffffff;
+      letter-spacing: 5px;
+      margin-top: 20px;
+      border-bottom: 2px solid #D4AF37;
+      padding-bottom: 5px;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 64px;
+      height: 64px;
+      border: 6px solid #ddd;
+      border-top-color: #D4AF37;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Navbar Hover */
+    .w3-bar-item {
+      transition: all .3s ease;
+    }
+
+    .w3-bar-item:hover {
+      background: #D4AF37 !important;
+      color: #fff !important;
+      border-radius: 6px;
+    }
+
+    /* Carousel Smooth Transition */
+    header {
+      width: 100%;
+      position: relative;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #111;
+    }
+
+    .mySlides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      z-index: 1;
+    }
+
+    .mySlides.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    .mySlides img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .w3-display-middle h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    /* Custom Tombol Panah */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      color: white !important;
+      font-size: 24px;
+      padding: 16px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-btn:hover {
+      background-color: #D4AF37 !important;
+      color: black !important;
+    }
+
+    .btn-left { left: 0; }
+    .btn-right { right: 0; }
+
+    /* Main Content */
+    .main-content {
+      background: rgba(255,255,255,.88);
+      margin: 30px;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .project-img {
+      width: 70% !important;
+      max-width: 70% !important;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .project-img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-img:hover {
+      transform: translateY(0) scale(1.03);
+    }
+
+    #projects, #contact {
+      scroll-margin-top: 80px;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .glass-card img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: rgba(0,0,0,0.60);
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      color: #FFF8E7;
+    }
+
+    #contact h3, #contact i {
+      color: #F4D35E;
+    }
+
+    /* Floating WhatsApp Button */
+    .wa-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #e0e0e0;
+      color: #555555;
+      display: flex;
+      align-items: center;
+      padding: 6px 20px 6px 8px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+
+    .wa-float .wa-icon {
+      font-size: 28px;
+      color: #fff;
+      background-color: #25D366;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+      background-color: #ffffff;
+    }
+
+    @media(max-width: 768px) {
+      .carousel-wrapper, .mySlides, .mySlides img {
+        height: 60vh;
+      }
+      .w3-display-middle h1 {
+        font-size: 28px;
+      }
+      .main-content {
+        margin: 15px;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>GEN</b> Gemilang Etnik Nusantara</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="#projects" class="w3-bar-item w3-button">Projects</a>
-      <a href="#about" class="w3-bar-item w3-button">About</a>
-      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-    </div>
-  </div>
-</div>
-
-<!-- Header -->
-<header class="w3-display-container" id="home">
-
-<img src="img/home.jpeg" alt="Banner">
-
-<div class="w3-display-middle">
-    <h1 class="w3-xxlarge w3-text-white">
-        <span class="w3-padding w3-black w3-opacity-min">
-            <b>GEN</b>
-        </span>
-        <span class="w3-hide-small">
-            Gemilang Etnik Nusantara
-        </span>
-    </h1>
-</div>
-
-</header>
-
-<!-- Page content -->
-<div class="w3-padding main-content">
-
-  <!-- Project Section -->
-  <div class="w3-container main-content" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader"></div>
+    <h2>GEN</h2>
   </div>
 
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-                <img src="img/1.jpeg" alt="Gambar" style="width:70%">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-                <img src="img/a.jpeg" alt="House" style="width:70%">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-             <img src="img/b.jpeg" alt="House" style="width:70%">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-                <img src="img/c.jpeg" alt="House" style="width:70%">
+  <!-- Navbar -->
+  <div class="w3-top" style="z-index: 9999;">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+      <a href="#home" class="w3-bar-item w3-button"><b>GEN</b> Gemilang Etnik Nusantara</a>
+      <div class="w3-right w3-hide-small">
+        <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+        <a href="#about" class="w3-bar-item w3-button">About</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
       </div>
     </div>
   </div>
 
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-            <img src="img/d.jpeg" alt="House" style="width:70%">
+  <!-- Carousel Header -->
+  <header id="home">
+    <div class="carousel-wrapper">
+
+      <!-- Slide 1 (Aktif) -->
+      <div class="mySlides active">
+        <img src="img/home.jpeg" alt="Banner 1">
+        <div class="w3-display-middle w3-center">
+          <h1 class="w3-xxlarge w3-text-white">
+            <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
+            <span class="w3-hide-small">Gemilang Etnik Nusantara</span>
+          </h1>
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-                <img src="img/f.jpeg" alt="House" style="width:70%">
+
+      <!-- Slide 2 -->
+      <div class="mySlides">
+        <img src="img/home2.jpeg" alt="Banner 2">
+        <div class="w3-display-middle w3-center">
+          <h1 class="w3-xxlarge w3-text-white">
+            <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
+            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+          </h1>
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-               <img src="img/g.jpeg" alt="House" style="width:70%">
+		
+		      <div class="mySlides">
+        <img src="img/home3.jpeg" alt="Banner 2">
+        <div class="w3-display-middle w3-center">
+          <h1 class="w3-xxlarge w3-text-white">
+            <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
+            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+          </h1>
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-                <img src="img/h.jpeg" alt="House" style="width:70%">
+	  
+	       <div class="mySlides">
+        <img src="img/home4.jpeg" alt="Banner 2">
+        <div class="w3-display-middle w3-center">
+          <h1 class="w3-xxlarge w3-text-white">
+            <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
+            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+          </h1>
+        </div>
       </div>
+	        <div class="mySlides">
+        <img src="img/home5.jpeg" alt="Banner 2">
+        <div class="w3-display-middle w3-center">
+          <h1 class="w3-xxlarge w3-text-white">
+            <span class="w3-padding w3-black w3-opacity-min"><b>GEN</b></span>
+            <span class="w3-hide-small">Pesona Budaya Lokal</span>
+          </h1>
+        </div>
+      </div>
+	  
+      <!-- Tombol Navigasi Kiri & Kanan -->
+      <button class="carousel-btn btn-left" onclick="plusDivs(-1)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn btn-right" onclick="plusDivs(1)">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
     </div>
+  </header>
+
+  <!-- Content Section -->
+  <div class="w3-padding main-content">
+
+    <!-- About Section -->
+    <section id="about" style="scroll-margin-top: 80px;">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+      <div class="glass-card">
+        <img src="img/Companyprofile.png" alt="Company Profile">
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+      <p><i class="fa-solid fa-phone"></i> No. HP: 08170442930</p>
+      <p><i class="fa-solid fa-envelope"></i> Email: genbatik@gmail.com / luggalfiana@gmail.com</p>
+    </div>
+
   </div>
 
-  <!-- About Section -->
-  <div class="main-content w3-padding" id="about">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-    <img src="img/Companyprofile.png" style="width:99%">
-  </div>
+  <!-- Footer -->
+  <footer class="w3-center w3-black w3-padding-16">
+    <p>© GEN - Gemilang Etnik Nusantara</p>
+  </footer>
 
-  
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20dengan%20layanan%20Anda" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp wa-icon"></i>
+    <span>Chat via Whatsapp</span>
+  </a>
 
-  <!-- Contact Section -->
- <div class="contact" id="contact">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-
-    <p><i class="fa-solid fa-phone"></i> No. HP: 08170442930</p>
-
-    <p><i class="fa-solid fa-envelope"></i> Email  : genbatik@gmail.com / luggalfiana@gmail.com</p>
-</div>
-  
-<!-- Image of location/map 
-<div class="w3-container">
-  <img src="img/2.jpeg" class="w3-image" style="width:50%">
-</div>
--->
-<!-- End page content -->
-</div>
-
-
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p> <a href="" title="" target="_blank" class="w3-hover-text-green"></a></p>
-</footer>
+  <!-- Script JS -->
+  <script src="script.js"></script>
 
 </body>
 </html>
